@@ -1,0 +1,47 @@
+1.性能就像经济领域的货币一样，是软件的基础
+2.Sort Problem
+    Input: sequence of <a1, a2, a3, a4> of numbers
+    Output: permutation of numbers
+
+    (1). Insertion Sort 
+        insertionSort(A[1...n])
+            for j=2 to n：
+                do key = A[j]
+                while key < A[j--]
+                   swap(key A[j--])
+                A[j--] = key
+        Running Time
+          - Depeneds on input(e.g. already sorted)
+          - Depend on input sizes(less than 30 items better than mergeSort)
+          - Need upper bound(guarantee to user)
+
+        Kinds of analys
+          Worst case(usually)
+            T(n) = max time on any input size of n
+          Average case(somethims)
+            T(n) = expected time over all inputs of n
+            (need asumption of statics distrbution)
+          Best case(bogus)
+
+        What is insertion sort's worst-case time?
+          Depends on computer
+            - relative speed(on same machine)
+            - absolute speend(on diff machine)
+          Asymptotic notation
+            -look growth of running time
+            θ notation (drop lower term ignoreleading constants)
+              Ex. 3n^3 + 5n^2 + 68 = θ(n^3)
+              as n - inf, θ(n^2)alg always beats θ(n^3) alg
+          Worst Case
+            -input reverse sorted
+            - (j=2→n)∑θ(j) = θ(n^2)
+
+    (2). Merge Sort
+        mergeSort(A[1...n])
+          1. If n == 1, done
+          2. Recursurely sort A[1...(n/2)] and A[(n/2)+1...n] (2T(n/2))
+          3. Merge two list (θ(n))
+
+          T(n) = 2T(n/2) + θ(n) = θ(nlgn)
+
+
