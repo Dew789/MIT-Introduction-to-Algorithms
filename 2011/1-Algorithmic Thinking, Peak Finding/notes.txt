@@ -1,0 +1,56 @@
+Peaking Finding
+  - One dimension version
+    Define peak:
+      a|b|c|d|e|f|g|h|i
+      position 2 is a peak if and if only b >= a anf b >= c,
+      position 9 is a peak if i >= h.
+
+    Target:
+      Find a peak
+
+    Straightforward Algorithm:
+      θ(n)
+
+    Divide and conquer:
+      θ(logn)
+      Array(1, 2, 3, ... n/2-1, n/2, n/2+1, ... n)
+      if n/2 <= n/2-1: (there is a throw)
+        look left-side
+      elif n/2 > n/2-1:
+        look right-side
+      else:
+        n/2 is peak
+  
+  - two dimension version
+    Define peak:
+      . c . . 
+      b a d . 
+      . e . .
+      . . . . (n rows, m columns)
+      a is a peak, if and if only a>=b, a>=c, a>=d, a>=e
+
+    Target:
+      Find a peak
+
+    Greedy Ascent algorithm(Q:whould it go through all elem??):
+      θ(nm)
+      pick a random start, check(left, right, top or bottom in some patttern) if 
+      greater the current, the move till find pick
+
+    recurrence relation:
+      θ(nlog2m)
+      Find maxium in column(i = m/2), the position is (i , j), then check (i-1, j)
+      (i ,j), (i+1, j), if (i-1, j) >= (i, j) pick left side, vice versa.
+
+      if (i-1, j)<=(i, j)<=(i+1, j), done
+
+
+
+
+
+
+
+                 
+
+
+
