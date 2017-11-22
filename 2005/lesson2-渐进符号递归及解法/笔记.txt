@@ -1,0 +1,26 @@
+Asymptotic notation
+  - O notation (<=)
+    f(n) = O(g(n)) if there exist constants c > 0, n0 > 0 such
+    that 0 ≤ f(n) ≤ cg(n) for all n ≥ n0.
+    e.g. 2n2 = O(n3) (c = 1, n0 = 2)
+
+    2n^2 = O(n^3) 
+    2n^2 ∈ O(n^3)
+
+    Convention:
+      A set in a formula represents an anonymous function in the set.
+        f(n) = n^3 + O(n^2) means there's a function f(n) = n3 + h(n)
+        for some h(n) ∈ O(n2)
+
+  - Ω-notation (>=)
+    Ω(g(n)) = f(n)
+      there exist constants c > 0, n0 > 0 suchthat 0 ≤ cg(n) ≤ f(n) 
+      for all n ≥ n 0 
+    e.g. √n = Ω(lgn) (c = 1, n0 = 16) 
+
+  - Θ-notation (=)
+    Θ(g(n)) = O(g(n)) ∩ Ω(g(n))
+
+  - o-notation (<)
+
+  - ω-notation (>)
