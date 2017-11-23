@@ -1,0 +1,23 @@
+1.loga(b^c) = c*loga(b)
+  证明：
+    a^b = c
+    b = loga(c) 
+
+    (a^b)^d = c^d
+    a^(db) = c^d
+    loga(c^d) = db
+    loga(c^d) = dlonga(c)
+
+2.loga(bc) = loga(b) + loga(c)
+  证明：
+    x = loga(bc)
+    y = loga(b)
+    z = loga(c)
+
+    a^x = bc
+    a^y = b
+    a^z = c
+    b * c = bc
+    a^y * a^z = a^x
+    a^(y+z) = a^(x)
+    loga(b) + loga(c) = loga(bc)
