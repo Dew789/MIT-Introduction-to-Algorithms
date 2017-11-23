@@ -31,7 +31,7 @@ Solving recurrences
     1. Guess the form of the solution.
     2. Recursion-tree method
       e.g. T(n) = T(n/4) + T(n/2) + n^2
-                        n^2                        1
+                        n^2                        1 
               (n/4)^2         (n/2)^2              5/16
         (n/16)^2  (n/8)^2   (n/8)^2   T(n/4)^2    25/256
         ....       ....       ....      ......     ...
@@ -41,4 +41,22 @@ Solving recurrences
               <= 2n^2
               = Θ(n^2)
     3. Master method
-      
+      The master method applies to recurrences of the form T(n) = aT(n/b) + f(n),
+      where a ≥ 1, b > 1, and f is asymptotically positive.(There is n0 where n > n0 
+      make f(n) is postive.)
+      Then we compare f(n) with blogb^a:
+      Case 1:
+        f(n) = O(n^(logb(a) – ε)) for some constant ε > 0.
+        f(n) grows polynomially slower than nlogb^a (by an n^ε factor).
+        Solution: T(n) = Θ(n^logb(a)) 
+      Case 2:
+        f(n) = Θ(n^logb(a) x (lg(k)n)) for some constant k ≥ 0.
+        f(n) and n^logb^a grow at similar rates
+        Solution: T(n) = Θ(n^logb(a) x lg(k+1)n)
+      Case 3:
+        f(n) = Ω(n^(logb(a) + ε)) for some constant ε > 0.
+        f(n) grows polynomially faster than n^logb^a (by an n^ε factor)
+        and f(n) satisfies the regularity condition that af(n/b) ≤ cf(n) 
+        for some constant c < 1
+        Solution: T(n) = Θ(f(n))
+
