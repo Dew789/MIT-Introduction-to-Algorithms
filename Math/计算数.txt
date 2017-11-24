@@ -1,0 +1,16 @@
+ALU：arithmetic and logic unit， 执行基本运算操作， 例如加，减，逻辑运算
+
+Time/speed of computer:
+  指令集的一次循环操作
+
+Space
+
+
+
+
+
+
+
+
+
+Web sizte: http://open.163.com/movie/2012/10/H/0/M99VJKUHC_M9ENDI4H0.htmls

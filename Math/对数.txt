@@ -21,3 +21,17 @@
     a^y * a^z = a^x
     a^(y+z) = a^(x)
     loga(b) + loga(c) = loga(bc)
+
+3.loga(b/c) = loga(b) - loga(c)
+
+4.logb(a) = logc(b) / logc(a)
+  证明：
+    logb(a) = c
+    b^c = a
+    ln(b^c) = ln(a)
+    cln(b) = ln(a)
+    c = ln(a) / ln(b) = logb(a)
+
+5.里氏震级以10为底的对数尺来标注
+
+Web site: http://open.163.com/movie/2011/4/F/H/M8LHU8P7V_M8LI5NFFH.html
