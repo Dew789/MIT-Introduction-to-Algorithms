@@ -2,14 +2,12 @@ Asymptotic notation
   - O notation (<=)
     f(n) = O(g(n)) if there exist constants c > 0, n0 > 0 such
     that 0 ≤ f(n) ≤ cg(n) for all n ≥ n0.
-    e.g. 2n2 = O(n3) (c = 1, n0 = 2)
-
-    2n^2 = O(n^3) 
-    2n^2 ∈ O(n^3)
+    e.g. 2n^2 = O(n^3) (c = 1, n0 = 2)
+         actually means 2n^2 ∈ O(n^3)
 
     Convention:
       A set in a formula represents an anonymous function in the set.
-        f(n) = n^3 + O(n^2) means there's a function f(n) = n3 + h(n)
+        f(n) = n^3 + O(n^2) means there's a function f(n) = n^3 + h(n)
         for some h(n) ∈ O(n2)
 
   - Ω-notation (>=)
@@ -50,13 +48,12 @@ Solving recurrences
         f(n) grows polynomially slower than nlogb^a (by an n^ε factor).
         Solution: T(n) = Θ(n^logb(a)) 
       Case 2:
-        f(n) = Θ(n^logb(a) x (lg(k)n)) for some constant k ≥ 0.
+        f(n) = Θ(n^logb(a) * (lg(k)n)) for some constant k ≥ 0.
         f(n) and n^logb^a grow at similar rates
-        Solution: T(n) = Θ(n^logb(a) x lg(k+1)n)
+        Solution: T(n) = Θ(n^logb(a) * lg(k+1)n)
       Case 3:
         f(n) = Ω(n^(logb(a) + ε)) for some constant ε > 0.
         f(n) grows polynomially faster than n^logb^a (by an n^ε factor)
         and f(n) satisfies the regularity condition that af(n/b) ≤ cf(n) 
         for some constant c < 1
         Solution: T(n) = Θ(f(n))
-

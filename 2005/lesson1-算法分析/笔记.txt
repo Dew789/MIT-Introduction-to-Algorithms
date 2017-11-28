@@ -1,4 +1,4 @@
-1.性能就像经济领域的货币一样，是软件的基础
+1.Performance is like currency in finance, it's the foundation of the software.
 2.Sort Problem
     Input: sequence of <a1, a2, a3, a4> of numbers
     Output: permutation of numbers
@@ -7,9 +7,9 @@
         insertionSort(A[1...n])
             for j=2 to n：
                 do key = A[j]
-                while key < A[j--]
-                   swap(key A[j--])
-                A[j--] = key
+                while i > 0 and A[i] > key
+                  do A[i+1] ← A[i]
+                A[i+1] = key
         Running Time
           - Depeneds on input(e.g. already sorted)
           - Depend on input sizes(less than 30 items better than mergeSort)
@@ -18,7 +18,7 @@
         Kinds of analys
           Worst case(usually)
             T(n) = max time on any input size of n
-          Average case(somethims)
+          Average case(somethimes)
             T(n) = expected time over all inputs of n
             (need asumption of statics distrbution)
           Best case(bogus)
@@ -29,7 +29,7 @@
             - absolute speend(on diff machine)
           Asymptotic notation
             -look growth of running time
-            θ notation (drop lower term ignoreleading constants)
+            θ notation (drop lower term ignore leading constants)
               Ex. 3n^3 + 5n^2 + 68 = θ(n^3)
               as n - inf, θ(n^2)alg always beats θ(n^3) alg
           Worst Case
@@ -42,6 +42,4 @@
           2. Recursurely sort A[1...(n/2)] and A[(n/2)+1...n] (2T(n/2))
           3. Merge two list (θ(n))
 
-          T(n) = 2T(n/2) + θ(n) = θ(nlgn)
-
-
+          T(n) = 2T(n/2) + θ(n) = 2T(n/2) + c*n = θ(nlgn)

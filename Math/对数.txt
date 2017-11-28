@@ -31,3 +31,9 @@
     ln(b^c) = ln(a)
     cln(b) = ln(a)
     c = ln(a) / ln(b) = logb(a)
+
+5.a^(logb(n)) = n^(logb(a))
+  证明：
+    (logb(a))*(logb(n)) = (logb(n))*log(b(a))
+    logb(a^(logb(n))) = logb(n^(logb(a)))
+    a^(logb(n)) = n^(logb(a))
