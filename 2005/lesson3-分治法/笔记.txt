@@ -1,1 +1,35 @@
-1.
+Divide and Conquer
+  - Divide problems into one or more subproblems
+  - Conquer each subproblems recursively 
+  - Combine soultions
+
+
+  Binary Search (find x in a sorted array)
+    - Divide. compare x with the middle
+    - Conquer. recurse in one subarray
+    - Combine. Trivial
+    
+    T(n) = T(n/2) + Θ(1)
+         = Θ(lgn)
+  
+  Powering a number
+    - given number x, interger n>=0, compute x^n
+
+    Native algorithm:
+      result = x * x * x ... * x
+      Θ(n)
+
+    Divide and conquer:
+      x^n = x^(n/2) * x^(n/2)  (x is even)
+            x^(n/2-1) * x^(n/2-1) (x is odd)
+      T(n) = T(n/2) + Θ(1)
+           = Θ(lgn)
+  
+  Fibonacci numbers:
+    - difine
+      F(n) = 0               if n = 0
+             1               if n = 1
+             F(n-1) = F(n-2) if n >= 2
+
+    Naive recursive algorithm: Ω(φ n)(exponential time), 
+    where φ = is the golden ratio.
