@@ -24,12 +24,33 @@ Divide and Conquer
             x^(n/2-1) * x^(n/2-1) (x is odd)
       T(n) = T(n/2) + Θ(1)
            = Θ(lgn)
-  
+
   Fibonacci numbers:
     - difine
       F(n) = 0               if n = 0
              1               if n = 1
              F(n-1) = F(n-2) if n >= 2
 
-    Naive recursive algorithm: Ω(φ n)(exponential time), 
-    where φ = is the golden ratio.
+    Naive recursive algorithm: Ω(φ^n)(exponential time), 
+    where φ = (1+√5)/2 is the golden ratio.
+
+   - Bottom-up algorithm:
+      Compute F0, F1, F2, …, Fn in order, forming
+      each number by summing the two previous
+
+      T(n) = Θ(n)
+  
+  - Naive recursive squaring:
+      Fn = φ^n/ 5 rounded to the nearest integer.
+
+      T(n) = Θ(lgn)
+    unreliable,  floating-point in real-life computer
+    arithmetic is prone to round-off errors
+  
+  - Theorem:
+      F(n+1) F(n)  =  |1 1|^n
+      F(n)   F(n+1)   |1 0|
+    Algorithm: Recursive squaring
+      T(n) = (lgn)
+  
+  
