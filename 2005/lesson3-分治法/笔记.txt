@@ -115,10 +115,21 @@ Divide and Conquer
       Problem: Embed a complete binary tree with n 
                leaves in a grid using minimal area.
 
-      -Native embed:
-        
+      - Native embed:
+        height: H(n) = H(n/2) + Θ(1)
+                     = Θ(lg*n)
+        weight: W(n) = 2W(n/2) + Θ(1)
+                     = Θ(n)
 
+        Area = Θ(n*lgn)
 
+      - H-tree embed
+        from conclusion to process
+        Goal:
+          H(n) = Θ(n^(1/2))
+          W(n) = Θ(n^(1/2))
+          Area = Θ(n)
+          T(n) = 2T(n/4) + Θ(n^(1/2-ε))
 
-
-
+        L(n) = 2L(n/4) + Θ(1)
+             = Θ(n^(1/2))
