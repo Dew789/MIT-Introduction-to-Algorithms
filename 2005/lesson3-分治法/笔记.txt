@@ -3,6 +3,10 @@ Divide and Conquer
   - Conquer each subproblems recursively 
   - Combine soultions
 
+  T(n) = aT(n/b) + Θ(n)
+    a: the number of subproblems
+    b: subproblems size
+    Θ(n): work dividing and combining
 
   Binary Search (find x in a sorted array)
     - Divide. compare x with the middle
@@ -48,9 +52,73 @@ Divide and Conquer
     arithmetic is prone to round-off errors
   
   - Theorem:
-      F(n+1) F(n)  =  |1 1|^n
-      F(n)   F(n+1)   |1 0|
-    Algorithm: Recursive squaring
-      T(n) = (lgn)
+    [(f(n+1),f(n)), (f(n),f(n-1))] = [(1,1), (1,0)]^n
+    - Proof by induction on n
+      when(n = 1):
+        [(f(2),f(1)), (f(1),f(0))] = [(1,1), (1,0)]^1
+      when(n>=2):
+        [(f(n+1),f(n)), (f(n),f(n-1))] 
+          = [(f(n),f(n-1)), (f(n-1),f(n-2))] * [(1,1), (1,0)]
+          = [(1,1), (1,0)]^(n-1) * [(1,1), (1,0)]
+          = [(1,1), (1,0)]^n
+    - Algorithm: Recursive squaring
+      T(n) = Θ(lgn)
   
-  
+  Matrix multiplication
+    Input: A[i,j], B[i, j]
+    Output: C[i, j] = A * B    (i,j = 1,2,3,...,n)
+              n
+    C[i,j] =  ∑ a[i,k] *b[k,j]
+             k=1
+    - Standard algorithm
+      Based on the formula to calculate each number in Matrix C.
+      T(n) = Θ(n^3)
+
+    - Divide and Conquer algorithm
+      n*n matrix = 2*2 matrix of (n/2)*(n/2) submatrices:
+      [[r],[s], [t],[u]] = 
+        [[a],[b], [s],[d]] * [[e],[f], [g],[h]]
+
+      C = A * B
+
+      r = ae + bg
+      s = af + bh
+      t = ce + dg
+      u = cf + dh
+      There are 8 recursive mults of (n/2)×(n/2) submatrices
+      T(n) = 8T(n/2) + 4*(n/2)^2
+           = 8T(n/2) + Θ(n^2)
+           = Θ(n^3)
+
+    - Strassen’s algorithm
+      Multiply 2×2 matrices with only 7 recursive mults:
+        P1 = a * (f – h)
+        P2 = (a + b) * h
+        P3 = (c + d) * e
+        P4 = d * (g – e)
+        P5 = (a + d) * (e + h)
+        P6 = (b – d) * (g + h)
+        P7 = (a – c) * (e + f)
+
+        r = P5 + P4 – P2 + P6
+        s = P1 + P2
+        t = P3 + P4
+        u = P5 + P1 – P3 – P7
+
+      T(n) = 7T(n/2) + Θ(n^2)
+           = Θ(n^(lg7))
+      Strassen’s algorithm beats the ordinary algorithm on 
+      today’s machines for n ≥ 32.
+      Best to date (of theoretical interest only): Θ(n^2.376)
+
+    VLSI(Very Large Scale Integration) layout
+      Problem: Embed a complete binary tree with n 
+               leaves in a grid using minimal area.
+
+      -Native embed:
+        
+
+
+
+
+
