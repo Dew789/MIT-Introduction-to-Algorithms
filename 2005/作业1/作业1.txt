@@ -1,0 +1,57 @@
+Problem 1-1. Asymptotic Notation
+For each of the following statements, decide whether it is always true, never true, or sometimestrue for asymptotically nonnegative functions f and g. If it is always true or never true, explain why. If it is sometimes true, give one example for which it is true, and one for which it is false.
+
+(a) f(n) = O(f(n)^2)
+  Solution: 
+    sometimes true.
+    f(n) = n, it's true,
+    f(n) = 1/n, it's not true.
+    it's true for all f(n) = Ω(1)
+
+(b) f(n) + g(n) = θ(max(f(n), g(n)))
+  Solution:
+    always true. 
+    max(f(n), g(n)) ≤ f(n) + g(n) ≤ 2max(f(n), g(n))
+
+(c) f(n) + O(f(n)) = θ(f(n))
+  Solution:
+    always true.
+    g(n) = O(f(n))
+    0 ≤ g(n) < cf(n), there is a constant c for large enough n.
+    Then f(n) ≤ f(n)+g(n) ≤ (1 + c)f(n) for large enough n.
+
+(d) f(n) = Ω(g(n)) and f(n) = o(g(n))
+  Solution:
+    if f(n) = Ω(g(n)) is true, it means there is a constant c make 
+    cg(n) <= f(n) for large enough n;but f(n) = o(g(n)) means for any
+    constant c, f(n) < c(g(n)) which is contradictory.
+
+(e) f(n) != O(g(n)) and g(n) != O(f(n))
+  Too hard. Maybe later time.
+    
+
+Problem 1-2. Recurrences
+Give asymptotic upper and lower bounds for T(n) in each of the following recurrences. Assume
+that T(n) is constant for v<=10 . Make your bounds as tight as possible, and justify your answers.
+
+(a) T(n) = 2T(n/3) + nlgn
+  Solution:
+     Case 3 of the Master Method
+     T(n) = θ(nlgn)
+
+(b) T(n) = 3T(n/5) + (lgn)^2
+  Solution:
+    Case 1 of the Master Method
+    T(n) = θ(n^(log5(3)))
+
+(c) T(n) = T(n/2) + 2^n
+  Solution:
+    Case 3 of the Master Method
+    T(n) = θ(2^n)
+    
+(d) T(n) = T(n^(1/2)) + θ(lglgn)
+  Solution:
+    let m = lgn, we have S(m) = S(m/2) + θ(lgm)
+    Case 2 of the Master Method
+      S(m) = θ((lgm)^2)
+      T(m) = θ((lglgn)^2)
