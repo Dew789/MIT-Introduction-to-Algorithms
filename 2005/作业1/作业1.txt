@@ -55,3 +55,41 @@ that T(n) is constant for v<=10 . Make your bounds as tight as possible, and jus
     Case 2 of the Master Method
       S(m) = θ((lgm)^2)
       T(m) = θ((lglgn)^2)
+
+(e) T(n) = 10T(n/3) + 17n^1.2
+  Solution:
+    Case 1 of the Master Method
+    T(n) = θ(n^(log3(10)))
+
+(f) T(n) = 7T(n/2) + n^3
+  Solution:
+    Case 3 of the Master Method
+    T(n) = θ(n^3)
+
+(g) T(n) = T(n/2 + √n) + √6046
+  Solution:
+     T(n/2) ≤ T (n/2 +√n) ≤ T(3n/4)
+     Case 2 of the Master Method:
+     T(n) = θ(lgn)
+
+(h) T(n) = T(n-2) + lgn
+  Solution:
+            n/2       n/2
+    T(n) = ∑lg2i >= ∑lgi = (T(n/2) = T(n/4)+lgn)
+            i=1       i=1
+          = Ω(nlgn)
+
+    T(n) <= (S(n) = S(n-1) + lgn) = O(nlgn)
+    T(n) = θ(nlgn)
+
+(i) T(n) = T(n/5) + T(4n/5) + θ(n)
+  Solution：
+    By Recursion-tree.
+    T(n) = θ(nlgn)
+
+(j) T(n) = √nT(√n) + 100n
+  Solution:
+    Too hard. Maybe later time.
+
+Problem 1-3. Unimodal Search
+  
