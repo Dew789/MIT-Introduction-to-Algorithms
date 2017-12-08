@@ -92,4 +92,34 @@ that T(n) is constant for v<=10 . Make your bounds as tight as possible, and jus
     Too hard. Maybe later time.
 
 Problem 1-3. Unimodal Search
-  
+  (a) Give an algorithm to compute the maximum element of a unimodal input array A[1...,n]
+      in O(lgn) time. Prove the correctness of your algorithm, and prove the bound on its
+      running time.
+    Solution:
+        Find the middle number A[m] in array then compare to left item
+        if A[m-1] < A[m] < A[m+1], the peak must in right half
+        if A[m-1] > A[m] > A[m+1], the peak must in left half
+        if A[m-1] < A[m] > A[m+1], A[m] is the peak.
+
+        Pseudocode:
+          a, b = 1,n
+          while a < b
+            do mid = (a+b)/2
+            if A[mid] < A[mid+1]
+                then a = mid + 1
+            if A[mid] > A[mid+1]
+               then b = mid
+          return A[a]
+        T(n) = T(n/2) + θ(1) = θ(lgn)
+
+    A polygon is convex if all of its internal angles are less than 180 (and none of the edges cross each other).
+      (b) Give an algorithm to find the vertex with the maximum x coordinate in O(lgn) time.
+        Solution:
+          Based on definition it's a Unimodal Search since x,u coordinates of the 
+          vertices are all distinct.We can use algorithm in (a).
+
+      (c) Give an algorithm to find the vertex with the maximum x coordinate in O(lgn) time.
+        Solution:
+          As the same as (b).
+
+
