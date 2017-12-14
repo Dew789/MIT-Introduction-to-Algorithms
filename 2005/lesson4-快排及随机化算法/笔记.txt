@@ -1,0 +1,84 @@
+Quicksort - proposed by Hoare 1962.
+  - Divide-and-conquer
+  - Sorts "in place"(don't need extra space, like insertion sort,
+     but not like merge sort)
+  - Very practical (with tuning)
+
+  - Quicksort an n element array:
+    1.Devide
+      Partition the array into two subarrays around a povit x such that
+      elements in lower subarray <= x <= elements in upper subarray.
+    2.Conquer
+      Recursively sort the two subarrays.
+    3.Combine
+      Trivial
+
+    Persodu code
+      protation(A, p, q)
+        x <- A[p]
+        i <- p
+        for j<-p+1 to q:
+          do if A[j] <= x
+            then i <- i+1
+              swap(A[i], A[j])
+        swap(A[p], A[i])
+        return i
+
+      quickSort(A, p, r)
+        if p < r
+          then q <- protation(A, p, r)
+          quicksort(A, p, q-1)
+          quicksort(A, q+1, r)
+
+    Analysis of quicksort
+      - Assume all input elements are distinct.
+      - In practice, there are better partitioning
+        algorithms for when duplicate input elements 
+        may exist.
+      Worest Case
+        - Input sorted or reverse sorted
+        - Partition around min or max element
+        T(n) = T(0) + T(n-1) + Θ(n)
+             = Θ(1) + T(n-1) + Θ(n)
+             = Θ(n^2)
+      Best Case
+        T(n) = 2T(n/2) + Θ(n)
+             = Θ(nlgn)
+      Specific Case
+        T(n) = T(1/10n) + T(9/10n) + Θ(n)
+             = Θ(nlogn)
+        based on recursion tree:
+          cn*log10(n) <= T(n) <= cnlog(10/9)n + O(n)
+      More intuition
+        - Suppose we alternate lucky, unlucky, lucky, unlucky, lucky
+          L(n) = 2U(n/2) + Θ(n)
+          U(n) = L(n-1) + Θ(n)
+          solving:
+            L(n) = 2(L(n/2-1)+Θ(n)) + Θ(n)
+                 = Θ(nlgn)
+
+    Ramdomized quicksort
+      - Running time is independent of the input order.
+      - No assumptions need to be made about the input distribution.
+      - No specific input elicits the worst-case behavior.
+      - The worst case is determined only by the output of a random-number generator
+    
+    Ramdomized quicksort analysis
+      omit proof...
+      E[T(n)] = anlg(n) - (an/4-Θ(n))
+              <= anlg(n) for large enough a make an/4 >= Θ(n).
+
+    Quick Sort in practice
+      - Quicksort is a great general-purpose sorting algorithm.
+      - Quicksort is typically over twice as fast as merge sort.
+      - Quicksort can benefit substantially from code tuning.
+      - Quicksort behaves well even with caching and virtual memory.
+
+
+
+
+
+
+
+
+
