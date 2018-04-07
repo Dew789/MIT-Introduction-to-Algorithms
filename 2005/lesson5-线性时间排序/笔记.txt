@@ -1,0 +1,72 @@
+How fast can we sort?
+  - depends on the model, what you can do with the elements.
+  comparison sort algorithm(model)
+    only use comparisons to determine order of elements
+    - quicksort  Θ(nlgn) when randomized, Θ(n^2)
+    - heapsort   Θ(nlgn)
+    - merge sort Θ(nlgn)
+    - insert sort Θ(nlgn)
+  can we do better than Θ(nlgn)?
+
+Decision-tree model
+  Example: sort <a1, a2, a3>
+                   1：2
+            2：3              1：3
+        123      1：3     213     2：3    
+               132   312       231   321
+  - One tree for each input size n
+  - View the algorithm as aplitting whenever it compares two elements.
+  - THe tree contains the comparisons along all possible instruction traces.
+  - The running time of the algorithm equals the length od the path
+  - Worst-case running time eauqls the height of tree.
+
+  Theorem： Any decision tree that can sort n elements must hava height Ω(nlgn)
+
+  Proof:
+    The tree must contain as least n! leaves, since there are n! possible permutations. A height h binart tree has most 2^h leaves.
+    n! <= 2^h
+    h >= lg(n!)
+      >= lg((n/e)^n)      (Stirling’s formula)
+       = nlgn - nlge
+       =  Ω(nlgn)
+
+   Corollary
+     Heapsort and merge sort are asymptotically optimal comparison sorting algorithms.
+
+
+Counting sort:
+  - input: A[1..n], where A[j] belongs {1,2,...k}
+  - output: B[1 .. n], sorted
+  - Auxiliary storage: C[1 ..k]
+
+  Θ(n + k)
+
+Stable sorting
+  it preserves the input order among equal elements.
+  radix sort, insertion sort, bubble sort, merge sort.
+
+Radix sort
+  Origin: Herman Hollerith's card-sorting machine for 1890
+  U.S. Census.
+  Bad idea: sort on the most-signigicant digit first
+  Good idea: Sort on the least-significant digit first with auxiliary stable sort.
+
+  How to combine Radixsort and Countsort
+  - Assume counting sort is the auxiliary stable sort.
+  - Sort n computer words of b bits each.
+  - Each word can be viewed as having b/r base-2r
+    digits
+  
+  Example: 32-bit word
+  4*countSort(2*8) or 2*countSort(2*16)?
+
+  Counting sort takes Θ(n + k) time to sort n numbers in the range from 0 to k – 1.
+  If each b-bit word is broken into r-bit pieces, each pass of counting sort takes Θ(n + 2r) time.
+  Since there are b/r passes, we have:
+    T(n, b) = Θ(b/r * (n+2^r))
+
+  Choosing r = lg n implies T(n, b) = Θ(bn/lg n)
+
+   For numbers in the range from 0 to nd – 1, we have b = d lg n ⇒ radix sort runs in Θ(d n) time
+
+
