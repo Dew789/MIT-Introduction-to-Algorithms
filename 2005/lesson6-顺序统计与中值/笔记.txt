@@ -8,7 +8,7 @@ Order statistics
     Pesudo
       RAND-SELECT(A, p, q, i)         - Find i-th smallest of A[p..q]
         if p == q then return A[p]
-        r ← RAND-PARTITION(A, p, q)   - part of randomized quick sort makes A[1,r-1] < A[r] a[r+1,q]
+        r ← RAND-PARTITION(A, p, q)   - part of randomized quick sort makes A[p,r-1] < A[r] < A[r+1,q]
         k ← r – p + 1                 
         if i = k then return A[r]
           then return RAND-SELECT(A, p, r – 1, i)
@@ -25,4 +25,37 @@ Order statistics
     Analysis of expected time
       pass, analysis procedure in PDF
 
-    
+    Summary of randomized order-statistic selection
+      - Works fast: linear expected time.
+      - Excellent algorithm in practice.
+      - But, the worst case is very bad: Θ(n2)
+
+  
+  Worst-case linear-time order statistics
+    Due to Blum, Floyd, Pratt, Rivest, and Tarjan [1973]
+    IDEA: Generate a good pivot recursively.
+
+    Procedure:
+      T(n)      SELECT(i, n)
+      Θ(n)      Divide the n elements into groups of 5. Find the median of each 
+      T(n/5)    5-element group by rote.
+                Recursively SELECT the median x of the ⎣n/5⎦ group medians to be the pivot
+      Θ(n)      Partition around the pivot x. Let k = rank(x)
+      T(3n/4)   if i = k then return x
+                elseif i < k
+                  then recursively SELECT the ith
+                      smallest element in the lower part
+                  else recursively SELECT the (i–k)th
+                      smallest element in the upper part
+
+    Analysis of expected time:
+      T(n) = T(3n/4) + t(1/5n) + Θ(n)
+           = 19cn/20 + Θ(n)             substitution, claim liner time, T(n) <= cn
+           = cn - (1cn/20 - Θ(n))
+          <= cn                         (1cn/20 - Θ(n)) has to greater than 0, if c is chosen 
+                                        large enough to handle both the Θ(n) and the initial conditions
+    Conclusions
+      - Since the work at each level of recursion is a constant fraction (19/20) smaller, the
+        work per level is a geometric series dominated by the linear work at the root
+      - In practice, this algorithm runs slowly, because the constant in front of n is large
+      - The randomized algorithm is far more practical
